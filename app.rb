@@ -1,5 +1,7 @@
 require "sinatra"
 require "sinatra/reloader"
+require "http"
+require "json"
 
 @pirate_weather_key = ENV.fetch("PIRATE_WEATHER_KEY")
 @gmaps_key = ENV.fetch("GMAPS_KEY")
