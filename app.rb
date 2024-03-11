@@ -2,7 +2,7 @@ require "sinatra"
 require "sinatra/reloader"
 require "http"
 require "json"
-require "active_support/all"
+require "sinatra/cookies"
 
 pirate_weather_key = ENV.fetch("PIRATE_WEATHER_KEY")
 gmaps_key = ENV.fetch("GMAPS_KEY")
@@ -40,6 +40,7 @@ post("/process_umbrella") do
   @current_temp = @currently_hash.fetch("temperature")
   @current_summary = @currently_hash.fetch("summary")
   precip_percent = @currently_hash.fetch("precipProbability")
+
   if precip_percent >= 0.1
     @umbrella_results = "You will need an umbrella today"
   else
