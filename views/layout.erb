@@ -1,12 +1,29 @@
 <!DOCTYPE html>
 <html>
+
+  <style>
+
+    .top_menu {
+
+      display: flex;
+      justify-content: space-around;
+    }
+  
+  </style>
+
   <head>
-    <title>Sinatra Template</title>
+    <title>My Omnicalc 3</title>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width,initial-scale=1">
   </head>
 
   <body>
+    <div class="top_menu">
+      <a href="/umbrella">Umbrella</a>
+      <a href="/message">Single AI message</a>
+      <a href="chat">AI Chat</a>
+    </div>
+
     <%= yield %>
   </body>
 </html>
