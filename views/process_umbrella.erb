@@ -1,0 +1,26 @@
+<%= params %>
+
+<% gmaps_url = "https://maps.googleapis.com/maps/api/geocode/json?address=#{@location}&key=#{@gmaps_key}" %>
+<% raw_response = HTTP.get(gmaps_url) %>
+<% parsed_response = HTTP.get(raw_response) %>
+<% results = parsed_response.fetch("results")%>
+<% results_array_to_hash = results.at(0) %>
+<% geometry = results_array_to_hash.fetch("geometry") %>
+<% location = geometry.fetch("location") %>
+<% lat = location.fetch("lat") %>
+<% lng = location.fetch("lng") %>
+
+<div>
+  <dt>User location</dt>
+  <dd><%= @location %></dd>
+  <dt>Latitude</dt>
+  <dd><%= lat %></dd>
+  <dt>Longitude</dt>
+  <dd><%= lng %></dd>
+  <dt>Current temperature</dt>
+  <dd><%= current_temp %></dd>
+  <dt>Umbrella?</dt>
+  <dd><%= umbrella_results %></dd>
+</div>
+
+<a href="/umbrella">Go back</a>
